@@ -1,4 +1,4 @@
-import './styles.css';
+
 
 /*
   1. Merge the two objects into a new object using the third object as the default 
@@ -32,7 +32,8 @@ const objDefault = {
   job: 'Senior UI Engineer'
 };
 
-let result = '';
+// não irei mentir eu uso copilot, então apareceu quando comecei a digitar ai como ja tinha olhado fico facil, mas eu entendi o que ele fez, ele pegou o objeto default e sobrescreveu os valores que ja existiam nos outros objetos ordenando por prioridade
+let result = Object.assign({}, objDefault, obj1, obj2);
 
 console.log('#1: ', result);
 
@@ -54,7 +55,19 @@ console.log('#1: ', result);
 
 /* YOUR CODE HERE */
 
-console.log('#2: ', result);
+// Cria um objeto pessoa com atributos
+const pessoa = {
+  name: 'Bruce',
+  age: 32,
+  job: 'Senior UI Engineer',
+  birthYear: '1990',
+  lastName: 'Wayne'
+}
+// mesmo usando copilot essa eu ja tinha feito em um curso, calcula a idade atraves do metodo getFullYear que pega o ano atual
+const calcIdade = pessoa.age = new Date().getFullYear() - pessoa.birthYear;
+pessoa.age = calcIdade;// substitui o valor antigo pelo novo
+
+console.log('#2: ', calcIdade);
 
 /*
   3. Filter the unavailable books into a new array. After that, remove the 
@@ -66,7 +79,8 @@ console.log('#2: ', result);
   #3 [books]: [Object (Ben Horowitz), Object (Steve Jobs)]
 */
 
-const books = [
+// no prmeiro momento troquei o const por let, 
+let books = [
   {
     author: 'Ray Dalio',
     title: 'Principles',
@@ -108,7 +122,23 @@ const books = [
 const unavailableBooks = '';
 
 /* YOUR CODE HERE */
+let livrosDisponiveis = [];
+let livrosIndisponiveis = [];
 
+for (let i = 0; i < books.length; i++) {
+  if (books[i].availableStatus) {
+    livrosIndisponiveis.push(books[i]);
+  } else {
+    livrosDisponiveis.push(books[i]);
+  }
+}
+books = [];
+for (let i = 0; i < livrosDisponiveis.length; i++) {
+  books.push(livrosDisponiveis[i]);
+}
+
+console.log('#3 [unavailableBooks]: ', livrosDisponiveis);
+console.log('#3 [unavailableBooks]: ', livrosIndisponiveis);
 console.log('#3 [unavailableBooks]: ', unavailableBooks);
 console.log('#3 [books]: ', books);
 

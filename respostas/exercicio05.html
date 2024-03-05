@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Exercicio 05</title>
+</head>
+<body>
+  <style>
+    /*class de criação do bloco*/
+    .bloco {
+      box-sizing: border-box;
+      
+      width: 100px;
+      height: 100px;
+      background-color: black;
+      border-top: 20px solid red;
+
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      
+      transition: transform 2s;
+      cursor: pointer;
+
+    }
+    /* class que faz a animação */
+    .girar {
+      transform: translate(-50%, -50%) rotate(360deg);
+    }
+  </style>
+                    <!-- faz com que um unico click a função seja executada -->
+  <div class="bloco" onclick="giraBloco()"></div>
+
+  <script>
+    // criação da função para possibilitar a animação
+    function giraBloco() {
+      // querySelector busca a class, e classList.toggle adiciona uma class
+      document.querySelector('.bloco').classList.toggle('girar');
+    }
+  </script>
+  <!-- descobri um jeito de fazer so com JS mais preciso entender primeiro para poder aplicar  -->
+</body>
+</html>
